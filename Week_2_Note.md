@@ -100,3 +100,32 @@ pip install mlflow
 	- Set experiment with name
 
 - Log at each information you want
+	- Log tags
+	- Log params
+	- Log metrics
+
+- Use hyperopt to finetune hyperparams 
+
+- Train new params with obtained params (best one)
+	- Mlflow autolog (for specific framework like Tensorflow, Pytorch, XGBoost)
+
+# Model Management 
+
+## Model tracking with folders:
+- Error prone
+- No versoning
+- No model lineage
+
+## Mlflow:
+
+- Save artifacts like: models
+- Loging models and reload model to predict
+
+# Model Registry
+
+## Motivation
+
+- Deploy new model.
+
+- What new in this model ?
+
