@@ -22,7 +22,7 @@ def run(data_path: str, date: str):
         X_valid, y_valid = load_pickle(os.path.join(data_path, f"valid-{date}.pkl"))
 
         rf = RandomForestRegressor(max_depth=10, random_state=0)
-        rf.fit(X_train, y_train-{date})
+        rf.fit(X_train, y_train)
         y_pred = rf.predict(X_valid)
 
         rmse = mean_squared_error(y_valid, y_pred, squared=False)
