@@ -31,7 +31,7 @@ def preprocess(df: pd.DataFrame, dv: DictVectorizer, fit_dv: bool = False):
         X = dv.transform(dicts)
     return X, dv
 
-def run(train_path: str = '', val_path: str = '', test_path: str = '', dest_path: str = './output'):
+def run(train_path: str = '', val_path: str = '', test_path: str = '', dest_path: str = './output', date: str = ''):
     df_train = read_dataframe(train_path)
     df_val = read_dataframe(val_path)
     df_test = read_dataframe(test_path)
@@ -48,7 +48,7 @@ def run(train_path: str = '', val_path: str = '', test_path: str = '', dest_path
 
     os.makedirs(dest_path, exist_ok=True)
 
-    dump_pickle(dv, os.path.join(dest_path, "dv.pkl"))
-    dump_pickle((X_train, y_train), os.path.join(dest_path, "train.pkl"))
-    dump_pickle((X_val, y_valid), os.path.join(dest_path, "valid.pkl"))
-    dump_pickle((X_test, y_test), os.path.join(dest_path, "test.pkl"))
+    dump_pickle(dv, os.path.join(dest_path, f"dv-{date}.pkl"))
+    dump_pickle((X_train, y_train), os.path.join(dest_path, f"train-{date}.pkl"))
+    dump_pickle((X_val, y_valid), os.path.join(dest_path, f"valid-{date}.pkl"))
+    dump_pickle((X_test, y_test), os.path.join(dest_path, f"test-{date}.pkl"))

@@ -28,6 +28,11 @@ def main(date=None):
 
 # main()
 
-train_path, val_path, test_path = get_paths('2021-03-01', raw_data_path='./data', dataset='green')
+# test function
+date = '2021-03-01'
+raw_data_path = './data'
+dest_path = './output'
+train_path, val_path, test_path = get_paths(date=date, raw_data_path=raw_data_path, dataset='green')
 print(train_path, val_path, test_path)
-process_data.run(train_path, val_path, test_path, dest_path='./output')
+process_data.run(train_path, val_path, test_path, dest_path=dest_path, date=date)
+train.run(dest_path, date)
