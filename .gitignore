@@ -2,3 +2,4 @@ mlruns/
 data/
 output/
 artifacts/
+__pycache__
