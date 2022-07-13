@@ -28,3 +28,4 @@ def run(data_path: str, date: str):
         rmse = mean_squared_error(y_valid, y_pred, squared=False)
         mlflow.log_metric("rmse", rmse)
         mlflow.log_param('date', date)
+    return rf

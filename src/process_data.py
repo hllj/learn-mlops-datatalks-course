@@ -52,3 +52,5 @@ def run(train_path: str = '', val_path: str = '', test_path: str = '', dest_path
     dump_pickle((X_train, y_train), os.path.join(dest_path, f"train-{date}.pkl"))
     dump_pickle((X_val, y_valid), os.path.join(dest_path, f"valid-{date}.pkl"))
     dump_pickle((X_test, y_test), os.path.join(dest_path, f"test-{date}.pkl"))
+
+    return dv
