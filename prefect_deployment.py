@@ -1,4 +1,6 @@
 import os
+import sys
+sys.path.append('')
 from prefect import task, flow, get_run_logger
 from datetime import datetime
 from dateutil.relativedelta import relativedelta
@@ -37,8 +39,16 @@ def main(date=None):
     dv = prepare_data(train_path, val_path, test_path, dest_path=DEST_PATH, date=date).result()
     rf = train_model(dest_path=DEST_PATH, date=date).result()
 
-# main()
 
-# test function
-date = '2021-03-01'
-main(date)
+from prefect.deployments import DeploymentSpec
+from prefect.orion.schemas.schedules import IntervalSchedule
+from prefect.flow_runners import SubprocessFlowRunner
+from datetime import timedelta
+
+DeploymentSpec(
+    flow=main,
+    name="model_training",
+    schedule=IntervalSchedule(interval=timedelta(minutes=10)),
+    flow_runner=SubprocessFlowRunner(),
+    tags=["training"],
+)

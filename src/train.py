@@ -16,7 +16,7 @@ def load_pickle(filename: str):
         return pickle.load(f_in)
 
 
-def run(data_path: str, date: str):
+def train(data_path: str, date: str):
     with mlflow.start_run():
         X_train, y_train = load_pickle(os.path.join(data_path, f"train-{date}.pkl"))
         X_valid, y_valid = load_pickle(os.path.join(data_path, f"valid-{date}.pkl"))

@@ -31,7 +31,7 @@ def preprocess(df: pd.DataFrame, dv: DictVectorizer, fit_dv: bool = False):
         X = dv.transform(dicts)
     return X, dv
 
-def run(train_path: str = '', val_path: str = '', test_path: str = '', dest_path: str = './output', date: str = ''):
+def process_data(train_path: str = '', val_path: str = '', test_path: str = '', dest_path: str = './output', date: str = ''):
     df_train = read_dataframe(train_path)
     df_val = read_dataframe(val_path)
     df_test = read_dataframe(test_path)
