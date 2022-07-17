@@ -4,6 +4,7 @@ import pickle
 
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.metrics import mean_squared_error
+from prefect import task
 
 import mlflow
 
@@ -16,6 +17,7 @@ def load_pickle(filename: str):
         return pickle.load(f_in)
 
 
+@task
 def train(data_path: str, date: str):
     with mlflow.start_run():
         X_train, y_train = load_pickle(os.path.join(data_path, f"train-{date}.pkl"))

@@ -4,6 +4,7 @@ import pickle
 
 import pandas as pd
 from sklearn.feature_extraction import DictVectorizer
+from prefect import task
 
 
 def dump_pickle(obj, filename):
@@ -31,6 +32,7 @@ def preprocess(df: pd.DataFrame, dv: DictVectorizer, fit_dv: bool = False):
         X = dv.transform(dicts)
     return X, dv
 
+@task
 def process_data(train_path: str = '', val_path: str = '', test_path: str = '', dest_path: str = './output', date: str = ''):
     df_train = read_dataframe(train_path)
     df_val = read_dataframe(val_path)
