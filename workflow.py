@@ -31,8 +31,7 @@ def main(date=None):
     train_path = os.path.join(RAW_DATA_PATH, train_filename)
     val_path = os.path.join(RAW_DATA_PATH, val_filename)
     test_path = os.path.join(RAW_DATA_PATH, test_filename)
-    dv = process_data(train_path, val_path, test_path, dest_path=DEST_PATH, date=date, wait_for=[download_dataset_by_date]).result()
-    rf = train(data_path=DEST_PATH, date=date, wait_for=[process_data]).result()
+    dv, rf = train(train_path, val_path, test_path, DEST_PATH, date).result()
 
 # main()
 
